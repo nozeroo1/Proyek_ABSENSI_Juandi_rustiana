@@ -744,8 +744,8 @@ namespace ABSENSI_Juandi_rustiana
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                e.Handled = true;
                 cmbjk.Focus();
+                cmbjk.DroppedDown = true;
             }
         }
 
@@ -788,8 +788,9 @@ namespace ABSENSI_Juandi_rustiana
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                e.Handled = true;
+               
                 cmbbjurusan.Focus();
+                cmbbjurusan.DroppedDown = true;
             }
         }
 
@@ -799,8 +800,9 @@ namespace ABSENSI_Juandi_rustiana
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                e.Handled = true;
+               
                 cmbstatus.Focus();
+                cmbstatus.DroppedDown = true;
             }
         }
 

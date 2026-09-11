@@ -68,6 +68,7 @@ namespace ABSENSI_Juandi_rustiana
             this.BTNLOG.Text = "Sign in";
             this.BTNLOG.UseVisualStyleBackColor = false;
             this.BTNLOG.Click += new System.EventHandler(this.BTNLOG_Click);
+            this.BTNLOG.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.BTNLOG_KeyPress);
             // 
             // label1
             // 
@@ -109,6 +110,7 @@ namespace ABSENSI_Juandi_rustiana
             this.textBox2.Size = new System.Drawing.Size(255, 20);
             this.textBox2.TabIndex = 1;
             this.textBox2.UseSystemPasswordChar = true;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             // 
             // textBox1
             // 
@@ -116,6 +118,7 @@ namespace ABSENSI_Juandi_rustiana
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(255, 20);
             this.textBox1.TabIndex = 0;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // Form1
             // 

@@ -60,5 +60,29 @@ namespace ABSENSI_Juandi_rustiana
         {
 
         }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter) && textBox1.Text != "")
+            {
+               
+                textBox2.Select();
+                
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+               
+             
+            }
+        }
+
+        private void BTNLOG_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
     }
 }
