@@ -398,6 +398,11 @@ namespace ABSENSI_Juandi_rustiana
             halaman.Show();
             this.Hide();
         }
+
+        private void btnbatal_Click(object sender, EventArgs e)
+        {
+            kosongkan();
+        }
     }
 }
     

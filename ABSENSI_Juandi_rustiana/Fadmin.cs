@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,37 @@ namespace ABSENSI_Juandi_rustiana
 
         private void Fadmin_Load(object sender, EventArgs e)
         {
-            
+            lblDate.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy", new CultureInfo("id-ID"));
+            lblCountSiswa.Text = Hitung("SELECT COUNT(*) FROM siswa");
+            lblCountKelas.Text = Hitung("SELECT COUNT(*) FROM kelas");
+            lblCountJurusan.Text = Hitung("SELECT COUNT(*) FROM jurusan");
+            lblCountGuru.Text = Hitung("SELECT COUNT(*) FROM guru");
+            lblCountMapel.Text = Hitung("SELECT COUNT(*) FROM mapel");
+            lblCountJadwal.Text = Hitung("SELECT COUNT(*) FROM jadwal");
+
+            cardSiswa.ShadowDecoration.Parent = cardSiswa;
+            cardKelas.ShadowDecoration.Parent = cardKelas;
+            cardJurusan.ShadowDecoration.Parent = cardJurusan;
+            cardGuru.ShadowDecoration.Parent = cardGuru;
+            cardMapel.ShadowDecoration.Parent = cardMapel;
+            cardJadwal.ShadowDecoration.Parent = cardJadwal;
+        }
+
+        private string Hitung(string sql)
+        {
+            try
+            {
+                db.crud(sql);
+                if (db.ds.Tables.Count > 0 && db.ds.Tables[0].Rows.Count > 0)
+                {
+                    return db.ds.Tables[0].Rows[0][0].ToString();
+                }
+            }
+            catch
+            {
+            }
+
+            return "0";
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)

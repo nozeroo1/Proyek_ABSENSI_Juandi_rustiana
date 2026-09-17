@@ -75,8 +75,8 @@ namespace ABSENSI_Juandi_rustiana
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-               
-             
+                e.Handled = true;
+                BTNLOG.PerformClick();
             }
         }
 

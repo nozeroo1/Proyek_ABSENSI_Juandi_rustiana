@@ -407,5 +407,10 @@ namespace ABSENSI_Juandi_rustiana
         {
 
         }
+
+        private void btnbatal_Click(object sender, EventArgs e)
+        {
+            kosongkan();
+        }
     }
 }

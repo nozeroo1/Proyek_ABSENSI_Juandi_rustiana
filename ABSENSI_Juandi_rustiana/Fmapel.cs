@@ -360,5 +360,10 @@ namespace ABSENSI_Juandi_rustiana
                 txtnama.Focus();
             }
         }
+
+        private void btnbatal_Click(object sender, EventArgs e)
+        {
+            kosongkan();
+        }
     }
 }

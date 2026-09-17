@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -122,6 +123,9 @@ namespace ABSENSI_Juandi_rustiana
             tampilData();
 
             txtnis.Select();
+
+            cardForm.ShadowDecoration.Parent = cardForm;
+            cardGrid.ShadowDecoration.Parent = cardGrid;
         }
 
         // =========================================================
@@ -183,6 +187,24 @@ namespace ABSENSI_Juandi_rustiana
                 datagridview.MultiSelect = false;
                 datagridview.ReadOnly = true;
                 datagridview.AllowUserToAddRows = false;
+
+                datagridview.EnableHeadersVisualStyles = false;
+                datagridview.BackgroundColor = Color.White;
+                datagridview.BorderStyle = BorderStyle.None;
+                datagridview.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+                datagridview.GridColor = Color.FromArgb(226, 232, 240);
+                datagridview.ColumnHeadersHeight = 42;
+                datagridview.RowTemplate.Height = 36;
+                datagridview.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(15, 23, 42);
+                datagridview.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+                datagridview.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(15, 23, 42);
+                datagridview.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI Semibold", 9.5f, FontStyle.Bold);
+                datagridview.DefaultCellStyle.Font = new Font("Segoe UI", 9.5f);
+                datagridview.DefaultCellStyle.ForeColor = Color.FromArgb(15, 23, 42);
+                datagridview.DefaultCellStyle.SelectionBackColor = Color.FromArgb(219, 234, 254);
+                datagridview.DefaultCellStyle.SelectionForeColor = Color.FromArgb(15, 23, 42);
+                datagridview.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(248, 250, 252);
+                datagridview.RowHeadersVisible = false;
             }
             catch (Exception ex)
             {

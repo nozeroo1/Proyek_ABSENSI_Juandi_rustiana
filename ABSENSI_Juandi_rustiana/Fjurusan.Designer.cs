@@ -3,316 +3,357 @@ namespace ABSENSI_Juandi_rustiana
 {
     partial class Fjurusan
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
-            {
                 components.Dispose();
-            }
             base.Dispose(disposing);
         }
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.dgvjurusan = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.btnkosongkan = new Guna.UI2.WinForms.Guna2Button();
-            this.btnsimpan = new Guna.UI2.WinForms.Guna2Button();
-            this.cmbstatus = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txtnama = new Guna.UI2.WinForms.Guna2TextBox();
-            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.txtkode = new Guna.UI2.WinForms.Guna2TextBox();
+            System.Windows.Forms.DataGridViewCellStyle dgvStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dgvStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dgvStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+
+            this.panelSidebar    = new Guna.UI2.WinForms.Guna2Panel();
+            this.lblSidebarRole   = new System.Windows.Forms.Label();
+            this.lblSidebarTitle  = new System.Windows.Forms.Label();
+            this.guna2Button1     = new Guna.UI2.WinForms.Guna2Button(); // Kembali
+            this.guna2Panel1      = new Guna.UI2.WinForms.Guna2Panel(); // Header
+            this.lblHeaderDesc    = new System.Windows.Forms.Label();
+            this.guna2HtmlLabel1  = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.panelContent     = new Guna.UI2.WinForms.Guna2Panel();
+            this.cardForm         = new Guna.UI2.WinForms.Guna2Panel();
+            this.cardGrid         = new Guna.UI2.WinForms.Guna2Panel();
+            this.dgvjurusan       = new Guna.UI2.WinForms.Guna2DataGridView();
+
+            this.txtkode      = new Guna.UI2.WinForms.Guna2TextBox();
+            this.txtnama      = new Guna.UI2.WinForms.Guna2TextBox();
+            this.cmbstatus    = new Guna.UI2.WinForms.Guna2ComboBox();
+
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+
+            this.btnsimpan    = new Guna.UI2.WinForms.Guna2Button();
+            this.btnkosongkan = new Guna.UI2.WinForms.Guna2Button(); // Batal
+
+            this.panelSidebar.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
+            this.panelContent.SuspendLayout();
+            this.cardForm.SuspendLayout();
+            this.cardGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvjurusan)).BeginInit();
-            this.guna2Panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // guna2Panel1
-            // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(249)))));
-            this.guna2Panel1.Controls.Add(this.dgvjurusan);
-            this.guna2Panel1.Controls.Add(this.guna2Panel2);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
-            this.guna2Panel1.Location = new System.Drawing.Point(25, 37);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(1415, 608);
-            this.guna2Panel1.TabIndex = 1;
-            // 
-            // dgvjurusan
-            // 
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.dgvjurusan.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvjurusan.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvjurusan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvjurusan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column3,
-            this.Column4,
-            this.Column2});
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvjurusan.DefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvjurusan.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvjurusan.Location = new System.Drawing.Point(18, 262);
-            this.dgvjurusan.Name = "dgvjurusan";
-            this.dgvjurusan.RowHeadersVisible = false;
-            this.dgvjurusan.Size = new System.Drawing.Size(1382, 329);
-            this.dgvjurusan.TabIndex = 3;
-            this.dgvjurusan.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dgvjurusan.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvjurusan.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvjurusan.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Id_Jurusan";
-            this.Column1.Name = "Column1";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Nama_Jurusan";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Status";
-            this.Column4.Name = "Column4";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Kode_Jurusan";
-            this.Column2.Name = "Column2";
-            // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.BackColor = System.Drawing.Color.White;
-            this.guna2Panel2.Controls.Add(this.guna2Button1);
-            this.guna2Panel2.Controls.Add(this.btnkosongkan);
-            this.guna2Panel2.Controls.Add(this.btnsimpan);
-            this.guna2Panel2.Controls.Add(this.cmbstatus);
-            this.guna2Panel2.Controls.Add(this.guna2HtmlLabel4);
-            this.guna2Panel2.Controls.Add(this.txtnama);
-            this.guna2Panel2.Controls.Add(this.guna2HtmlLabel3);
-            this.guna2Panel2.Controls.Add(this.txtkode);
-            this.guna2Panel2.Controls.Add(this.guna2HtmlLabel2);
-            this.guna2Panel2.Location = new System.Drawing.Point(36, 66);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(1348, 179);
-            this.guna2Panel2.TabIndex = 2;
-            // 
-            // btnkosongkan
-            // 
-            this.btnkosongkan.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnkosongkan.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnkosongkan.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnkosongkan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnkosongkan.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnkosongkan.ForeColor = System.Drawing.Color.White;
-            this.btnkosongkan.Location = new System.Drawing.Point(193, 118);
-            this.btnkosongkan.Name = "btnkosongkan";
-            this.btnkosongkan.Size = new System.Drawing.Size(140, 39);
-            this.btnkosongkan.TabIndex = 10;
-            this.btnkosongkan.Text = "Kosongkan";
-            this.btnkosongkan.Click += new System.EventHandler(this.btnkosongkan_Click);
-            // 
-            // btnsimpan
-            // 
-            this.btnsimpan.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnsimpan.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnsimpan.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnsimpan.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnsimpan.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnsimpan.ForeColor = System.Drawing.Color.White;
-            this.btnsimpan.Location = new System.Drawing.Point(10, 118);
-            this.btnsimpan.Name = "btnsimpan";
-            this.btnsimpan.Size = new System.Drawing.Size(140, 39);
-            this.btnsimpan.TabIndex = 9;
-            this.btnsimpan.Text = "Simpan";
-            this.btnsimpan.Click += new System.EventHandler(this.btnsimpan_Click_1);
-            // 
-            // cmbstatus
-            // 
-            this.cmbstatus.BackColor = System.Drawing.Color.Transparent;
-            this.cmbstatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.cmbstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbstatus.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbstatus.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.cmbstatus.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.cmbstatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.cmbstatus.ItemHeight = 30;
-            this.cmbstatus.Location = new System.Drawing.Point(654, 38);
-            this.cmbstatus.Name = "cmbstatus";
-            this.cmbstatus.Size = new System.Drawing.Size(301, 36);
-            this.cmbstatus.TabIndex = 8;
-            // 
-            // guna2HtmlLabel4
-            // 
-            this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel4.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(654, 12);
-            this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(39, 22);
-            this.guna2HtmlLabel4.TabIndex = 7;
-            this.guna2HtmlLabel4.Text = "Status";
-            // 
-            // txtnama
-            // 
-            this.txtnama.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtnama.DefaultText = "";
-            this.txtnama.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtnama.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtnama.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtnama.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtnama.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtnama.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtnama.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtnama.Location = new System.Drawing.Point(331, 38);
-            this.txtnama.Name = "txtnama";
-            this.txtnama.PlaceholderText = "";
-            this.txtnama.SelectedText = "";
-            this.txtnama.Size = new System.Drawing.Size(273, 36);
-            this.txtnama.TabIndex = 6;
-            // 
-            // guna2HtmlLabel3
-            // 
-            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(331, 12);
-            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(87, 22);
-            this.guna2HtmlLabel3.TabIndex = 5;
-            this.guna2HtmlLabel3.Text = "Nama Jurusan";
-            // 
-            // txtkode
-            // 
-            this.txtkode.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtkode.DefaultText = "";
-            this.txtkode.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtkode.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtkode.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtkode.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtkode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtkode.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtkode.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtkode.Location = new System.Drawing.Point(10, 38);
-            this.txtkode.Name = "txtkode";
-            this.txtkode.PlaceholderText = "";
-            this.txtkode.SelectedText = "";
-            this.txtkode.Size = new System.Drawing.Size(273, 36);
-            this.txtkode.TabIndex = 4;
-            this.txtkode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtkode_KeyPress);
-            // 
-            // guna2HtmlLabel2
-            // 
-            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(10, 12);
-            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(86, 22);
-            this.guna2HtmlLabel2.TabIndex = 3;
-            this.guna2HtmlLabel2.Text = "Kode Jurusan";
-            // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(36, 22);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(124, 24);
-            this.guna2HtmlLabel1.TabIndex = 1;
-            this.guna2HtmlLabel1.Text = "Data Jurusan";
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
+
+            // panelSidebar
+            this.panelSidebar.BackColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.panelSidebar.FillColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.panelSidebar.Controls.Add(this.lblSidebarRole);
+            this.panelSidebar.Controls.Add(this.lblSidebarTitle);
+            this.panelSidebar.Controls.Add(this.guna2Button1);
+            this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panelSidebar.Location = new System.Drawing.Point(0, 0);
+            this.panelSidebar.Name = "panelSidebar";
+            this.panelSidebar.Size = new System.Drawing.Size(260, 720);
+            this.panelSidebar.TabIndex = 0;
+
+            this.lblSidebarTitle.AutoSize = true;
+            this.lblSidebarTitle.Font = new System.Drawing.Font("Segoe UI Semibold", 14F, System.Drawing.FontStyle.Bold);
+            this.lblSidebarTitle.ForeColor = System.Drawing.Color.White;
+            this.lblSidebarTitle.Location = new System.Drawing.Point(20, 24);
+            this.lblSidebarTitle.Name = "lblSidebarTitle";
+            this.lblSidebarTitle.TabIndex = 1;
+            this.lblSidebarTitle.Text = "Sistem Absensi";
+
+            this.lblSidebarRole.AutoSize = true;
+            this.lblSidebarRole.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblSidebarRole.ForeColor = System.Drawing.Color.FromArgb(148, 163, 184);
+            this.lblSidebarRole.Location = new System.Drawing.Point(22, 52);
+            this.lblSidebarRole.Name = "lblSidebarRole";
+            this.lblSidebarRole.TabIndex = 2;
+            this.lblSidebarRole.Text = "Administrator";
+
+            this.guna2Button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.guna2Button1.BorderRadius = 8;
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(741, 118);
+            this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(37, 99, 235);
+            this.guna2Button1.Location = new System.Drawing.Point(16, 662);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(110, 39);
-            this.guna2Button1.TabIndex = 27;
+            this.guna2Button1.Size = new System.Drawing.Size(228, 42);
+            this.guna2Button1.TabIndex = 26;
             this.guna2Button1.Text = "Kembali";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
-            // 
-            // Fjurusan
-            // 
+
+            // Header
+            this.guna2Panel1.BackColor = System.Drawing.Color.White;
+            this.guna2Panel1.FillColor = System.Drawing.Color.White;
+            this.guna2Panel1.CustomBorderColor = System.Drawing.Color.FromArgb(226, 232, 240);
+            this.guna2Panel1.CustomBorderThickness = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.guna2Panel1.Controls.Add(this.lblHeaderDesc);
+            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.guna2Panel1.Location = new System.Drawing.Point(260, 0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(1110, 88);
+            this.guna2Panel1.TabIndex = 15;
+
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Segoe UI Semibold", 16F, System.Drawing.FontStyle.Bold);
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(28, 18);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(130, 32);
+            this.guna2HtmlLabel1.TabIndex = 0;
+            this.guna2HtmlLabel1.Text = "Data Jurusan";
+
+            this.lblHeaderDesc.AutoSize = true;
+            this.lblHeaderDesc.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblHeaderDesc.ForeColor = System.Drawing.Color.FromArgb(100, 116, 139);
+            this.lblHeaderDesc.Location = new System.Drawing.Point(28, 50);
+            this.lblHeaderDesc.Name = "lblHeaderDesc";
+            this.lblHeaderDesc.TabIndex = 1;
+            this.lblHeaderDesc.Text = "Kelola data jurusan dan kode jurusan.";
+
+            // panelContent
+            this.panelContent.BackColor = System.Drawing.Color.FromArgb(241, 245, 249);
+            this.panelContent.FillColor = System.Drawing.Color.FromArgb(241, 245, 249);
+            this.panelContent.Controls.Add(this.cardGrid);
+            this.panelContent.Controls.Add(this.cardForm);
+            this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContent.Location = new System.Drawing.Point(260, 88);
+            this.panelContent.Name = "panelContent";
+            this.panelContent.Padding = new System.Windows.Forms.Padding(24);
+            this.panelContent.Size = new System.Drawing.Size(1110, 632);
+            this.panelContent.TabIndex = 2;
+
+            // cardForm
+            this.cardForm.BackColor = System.Drawing.Color.White;
+            this.cardForm.FillColor = System.Drawing.Color.White;
+            this.cardForm.BorderRadius = 12;
+            this.cardForm.ShadowDecoration.Enabled = true;
+            this.cardForm.ShadowDecoration.Depth = 6;
+            this.cardForm.ShadowDecoration.BorderRadius = 12;
+            this.cardForm.Controls.Add(this.guna2HtmlLabel2);
+            this.cardForm.Controls.Add(this.txtkode);
+            this.cardForm.Controls.Add(this.guna2HtmlLabel3);
+            this.cardForm.Controls.Add(this.txtnama);
+            this.cardForm.Controls.Add(this.guna2HtmlLabel4);
+            this.cardForm.Controls.Add(this.cmbstatus);
+            this.cardForm.Controls.Add(this.btnsimpan);
+            this.cardForm.Controls.Add(this.btnkosongkan);
+            this.cardForm.Dock = System.Windows.Forms.DockStyle.Top;
+            this.cardForm.Location = new System.Drawing.Point(24, 24);
+            this.cardForm.Name = "cardForm";
+            this.cardForm.Size = new System.Drawing.Size(1062, 172);
+            this.cardForm.TabIndex = 0;
+
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(16, 20);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(80, 19);
+            this.guna2HtmlLabel2.TabIndex = 0;
+            this.guna2HtmlLabel2.Text = "Kode Jurusan";
+
+            this.txtkode.BorderColor = System.Drawing.Color.FromArgb(203, 213, 225);
+            this.txtkode.BorderRadius = 8;
+            this.txtkode.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtkode.DefaultText = "";
+            this.txtkode.FocusedState.BorderColor = System.Drawing.Color.FromArgb(37, 99, 235);
+            this.txtkode.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtkode.HoverState.BorderColor = System.Drawing.Color.FromArgb(37, 99, 235);
+            this.txtkode.Location = new System.Drawing.Point(16, 44);
+            this.txtkode.Name = "txtkode";
+            this.txtkode.PlaceholderText = "Kode jurusan";
+            this.txtkode.SelectedText = "";
+            this.txtkode.Size = new System.Drawing.Size(240, 36);
+            this.txtkode.TabIndex = 1;
+            this.txtkode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtkode_KeyPress);
+
+            this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(280, 20);
+            this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(80, 19);
+            this.guna2HtmlLabel3.TabIndex = 1;
+            this.guna2HtmlLabel3.Text = "Nama Jurusan";
+
+            this.txtnama.BorderColor = System.Drawing.Color.FromArgb(203, 213, 225);
+            this.txtnama.BorderRadius = 8;
+            this.txtnama.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtnama.DefaultText = "";
+            this.txtnama.FocusedState.BorderColor = System.Drawing.Color.FromArgb(37, 99, 235);
+            this.txtnama.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtnama.HoverState.BorderColor = System.Drawing.Color.FromArgb(37, 99, 235);
+            this.txtnama.Location = new System.Drawing.Point(280, 44);
+            this.txtnama.Name = "txtnama";
+            this.txtnama.PlaceholderText = "Nama jurusan";
+            this.txtnama.SelectedText = "";
+            this.txtnama.Size = new System.Drawing.Size(240, 36);
+            this.txtnama.TabIndex = 2;
+
+            this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.guna2HtmlLabel4.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(540, 20);
+            this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(43, 19);
+            this.guna2HtmlLabel4.TabIndex = 2;
+            this.guna2HtmlLabel4.Text = "Status";
+
+            this.cmbstatus.BackColor = System.Drawing.Color.Transparent;
+            this.cmbstatus.BorderColor = System.Drawing.Color.FromArgb(203, 213, 225);
+            this.cmbstatus.BorderRadius = 8;
+            this.cmbstatus.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbstatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbstatus.FocusedColor = System.Drawing.Color.FromArgb(37, 99, 235);
+            this.cmbstatus.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbstatus.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.cmbstatus.ItemHeight = 30;
+            this.cmbstatus.Location = new System.Drawing.Point(540, 44);
+            this.cmbstatus.Name = "cmbstatus";
+            this.cmbstatus.Size = new System.Drawing.Size(240, 36);
+            this.cmbstatus.TabIndex = 3;
+
+            this.btnsimpan.BorderRadius = 8;
+            this.btnsimpan.FillColor = System.Drawing.Color.FromArgb(37, 99, 235);
+            this.btnsimpan.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnsimpan.ForeColor = System.Drawing.Color.White;
+            this.btnsimpan.HoverState.FillColor = System.Drawing.Color.FromArgb(29, 78, 216);
+            this.btnsimpan.Location = new System.Drawing.Point(16, 120);
+            this.btnsimpan.Name = "btnsimpan";
+            this.btnsimpan.Size = new System.Drawing.Size(120, 40);
+            this.btnsimpan.TabIndex = 4;
+            this.btnsimpan.Text = "Simpan";
+            this.btnsimpan.Click += new System.EventHandler(this.btnsimpan_Click_1);
+
+            this.btnkosongkan.BorderColor = System.Drawing.Color.FromArgb(203, 213, 225);
+            this.btnkosongkan.BorderRadius = 8;
+            this.btnkosongkan.BorderThickness = 1;
+            this.btnkosongkan.FillColor = System.Drawing.Color.White;
+            this.btnkosongkan.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnkosongkan.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
+            this.btnkosongkan.HoverState.FillColor = System.Drawing.Color.FromArgb(241, 245, 249);
+            this.btnkosongkan.Location = new System.Drawing.Point(148, 120);
+            this.btnkosongkan.Name = "btnkosongkan";
+            this.btnkosongkan.Size = new System.Drawing.Size(120, 40);
+            this.btnkosongkan.TabIndex = 5;
+            this.btnkosongkan.Text = "Batal";
+            this.btnkosongkan.Click += new System.EventHandler(this.btnkosongkan_Click);
+
+            // cardGrid + dgvjurusan (tanpa kolom statis)
+            this.cardGrid.BackColor = System.Drawing.Color.White;
+            this.cardGrid.FillColor = System.Drawing.Color.White;
+            this.cardGrid.BorderRadius = 12;
+            this.cardGrid.ShadowDecoration.Enabled = true;
+            this.cardGrid.ShadowDecoration.Depth = 6;
+            this.cardGrid.ShadowDecoration.BorderRadius = 12;
+            this.cardGrid.Controls.Add(this.dgvjurusan);
+            this.cardGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cardGrid.Location = new System.Drawing.Point(24, 220);
+            this.cardGrid.Name = "cardGrid";
+            this.cardGrid.Padding = new System.Windows.Forms.Padding(16);
+            this.cardGrid.Size = new System.Drawing.Size(1062, 388);
+            this.cardGrid.TabIndex = 1;
+
+            dgvStyle1.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
+            this.dgvjurusan.AlternatingRowsDefaultCellStyle = dgvStyle1;
+            this.dgvjurusan.BackgroundColor = System.Drawing.Color.White;
+            dgvStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dgvStyle2.BackColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            dgvStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.5F, System.Drawing.FontStyle.Bold);
+            dgvStyle2.ForeColor = System.Drawing.Color.White;
+            dgvStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            dgvStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dgvStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvjurusan.ColumnHeadersDefaultCellStyle = dgvStyle2;
+            this.dgvjurusan.ColumnHeadersHeight = 42;
+            this.dgvjurusan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            dgvStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dgvStyle3.BackColor = System.Drawing.Color.White;
+            dgvStyle3.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            dgvStyle3.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            dgvStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(219, 234, 254);
+            dgvStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            dgvStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvjurusan.DefaultCellStyle = dgvStyle3;
+            this.dgvjurusan.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvjurusan.GridColor = System.Drawing.Color.FromArgb(226, 232, 240);
+            this.dgvjurusan.Location = new System.Drawing.Point(16, 16);
+            this.dgvjurusan.Name = "dgvjurusan";
+            this.dgvjurusan.RowHeadersVisible = false;
+            this.dgvjurusan.RowTemplate.Height = 36;
+            this.dgvjurusan.Size = new System.Drawing.Size(1030, 356);
+            this.dgvjurusan.TabIndex = 0;
+            this.dgvjurusan.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(248, 250, 252);
+            this.dgvjurusan.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.dgvjurusan.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 9.5F, System.Drawing.FontStyle.Bold);
+            this.dgvjurusan.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dgvjurusan.ThemeStyle.HeaderStyle.Height = 42;
+            this.dgvjurusan.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dgvjurusan.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.dgvjurusan.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.dgvjurusan.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(219, 234, 254);
+            this.dgvjurusan.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.dgvjurusan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.datagridview_CellContentClick);
+
+            // Form
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1370, 657);
+            this.BackColor = System.Drawing.Color.FromArgb(241, 245, 249);
+            this.ClientSize = new System.Drawing.Size(1370, 720);
+            this.Controls.Add(this.panelContent);
             this.Controls.Add(this.guna2Panel1);
+            this.Controls.Add(this.panelSidebar);
+            this.MinimumSize = new System.Drawing.Size(1100, 680);
             this.Name = "Fjurusan";
-            this.Text = "Fjurusan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Data Jurusan - Sistem Absensi";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Fjurusan_Load);
+
+            this.panelSidebar.ResumeLayout(false);
+            this.panelSidebar.PerformLayout();
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            this.panelContent.ResumeLayout(false);
+            this.cardForm.ResumeLayout(false);
+            this.cardForm.PerformLayout();
+            this.cardGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvjurusan)).EndInit();
-            this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel2.PerformLayout();
             this.ResumeLayout(false);
-
         }
 
         #endregion
 
+        private Guna.UI2.WinForms.Guna2Panel panelSidebar;
+        private System.Windows.Forms.Label lblSidebarTitle;
+        private System.Windows.Forms.Label lblSidebarRole;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2DataGridView dgvjurusan;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
-        private Guna.UI2.WinForms.Guna2Button btnkosongkan;
-        private Guna.UI2.WinForms.Guna2Button btnsimpan;
-        private Guna.UI2.WinForms.Guna2ComboBox cmbstatus;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
-        private Guna.UI2.WinForms.Guna2TextBox txtnama;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
-        private Guna.UI2.WinForms.Guna2TextBox txtkode;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private System.Windows.Forms.Label lblHeaderDesc;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2Panel panelContent;
+        private Guna.UI2.WinForms.Guna2Panel cardForm;
+        private Guna.UI2.WinForms.Guna2Panel cardGrid;
+        private Guna.UI2.WinForms.Guna2DataGridView dgvjurusan;
+        private Guna.UI2.WinForms.Guna2TextBox txtkode;
+        private Guna.UI2.WinForms.Guna2TextBox txtnama;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbstatus;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
+        private Guna.UI2.WinForms.Guna2Button btnsimpan;
+        private Guna.UI2.WinForms.Guna2Button btnkosongkan;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }
