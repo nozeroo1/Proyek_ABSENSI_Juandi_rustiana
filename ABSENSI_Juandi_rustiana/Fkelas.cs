@@ -15,90 +15,63 @@ namespace ABSENSI_Juandi_rustiana
         }
 
         // =========================================================
-        // MENAMPILKAN DATA KELAS
+        // TAMPIL DATA KELAS
         // =========================================================
         private void tampilData()
         {
             try
             {
-                string sql = @"
-                    SELECT 
-                        k.id_kelas,
-                        k.id_jurusan,
-                        j.nama_jurusan,
-                        k.nama_kelas,
-                        k.tingkat,
-                        k.wali_kelas,
-                        k.status
-                    FROM kelas k
-                    LEFT JOIN jurusan j 
-                        ON k.id_jurusan = j.id_jurusan
-                    ORDER BY k.id_kelas DESC";
-
-                db.crud(sql);
+                db.crud(@"SELECT
+                            k.id_kelas,
+                            k.id_jurusan,
+                            j.nama_jurusan,
+                            k.nama_kelas,
+                            k.tingkat,
+                            k.id_wali_kelas,
+                            g.nama_guru AS wali_kelas,
+                            k.status
+                          FROM kelas k
+                          LEFT JOIN jurusan j
+                              ON k.id_jurusan = j.id_jurusan
+                          LEFT JOIN guru g
+                              ON k.id_wali_kelas = g.id_guru
+                          ORDER BY k.id_kelas DESC");
 
                 datagridview.DataSource = db.ds.Tables[0];
 
-                // Pengaturan DataGridView
                 datagridview.AutoSizeColumnsMode =
                     DataGridViewAutoSizeColumnsMode.Fill;
-
                 datagridview.SelectionMode =
                     DataGridViewSelectionMode.FullRowSelect;
-
-                datagridview.MultiSelect = false;
-                datagridview.ReadOnly = true;
+                datagridview.MultiSelect        = false;
+                datagridview.ReadOnly           = true;
                 datagridview.AllowUserToAddRows = false;
 
-                // Sembunyikan ID
+                // Sembunyikan kolom ID
                 if (datagridview.Columns.Contains("id_kelas"))
-                {
                     datagridview.Columns["id_kelas"].Visible = false;
-                }
-
                 if (datagridview.Columns.Contains("id_jurusan"))
-                {
                     datagridview.Columns["id_jurusan"].Visible = false;
-                }
+                if (datagridview.Columns.Contains("id_wali_kelas"))
+                    datagridview.Columns["id_wali_kelas"].Visible = false;
 
-                // Ubah nama header
+                // Header yang ramah
                 if (datagridview.Columns.Contains("nama_jurusan"))
-                {
-                    datagridview.Columns["nama_jurusan"].HeaderText =
-                        "Jurusan";
-                }
-
+                    datagridview.Columns["nama_jurusan"].HeaderText = "Jurusan";
                 if (datagridview.Columns.Contains("nama_kelas"))
-                {
-                    datagridview.Columns["nama_kelas"].HeaderText =
-                        "Nama Kelas";
-                }
-
+                    datagridview.Columns["nama_kelas"].HeaderText = "Nama Kelas";
                 if (datagridview.Columns.Contains("tingkat"))
-                {
-                    datagridview.Columns["tingkat"].HeaderText =
-                        "Tingkat";
-                }
-
+                    datagridview.Columns["tingkat"].HeaderText = "Tingkat";
                 if (datagridview.Columns.Contains("wali_kelas"))
-                {
-                    datagridview.Columns["wali_kelas"].HeaderText =
-                        "Wali Kelas";
-                }
-
+                    datagridview.Columns["wali_kelas"].HeaderText = "Wali Kelas";
                 if (datagridview.Columns.Contains("status"))
-                {
-                    datagridview.Columns["status"].HeaderText =
-                        "Status";
-                }
+                    datagridview.Columns["status"].HeaderText = "Status";
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
                     "Gagal menampilkan data kelas: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error
                 );
             }
         }
@@ -110,26 +83,59 @@ namespace ABSENSI_Juandi_rustiana
         {
             try
             {
-                db.crud(@"
-                    SELECT 
-                        id_jurusan,
-                        nama_jurusan
-                    FROM jurusan
-                    WHERE status = 'Aktif'
-                    ORDER BY nama_jurusan ASC");
+                db.crud(@"SELECT id_jurusan, nama_jurusan
+                          FROM jurusan
+                          WHERE status = 'Aktif'
+                          ORDER BY nama_jurusan ASC");
 
-                cmbjurusan.DataSource = db.ds.Tables[0];
+                cmbjurusan.DataSource    = db.ds.Tables[0];
                 cmbjurusan.DisplayMember = "nama_jurusan";
-                cmbjurusan.ValueMember = "id_jurusan";
+                cmbjurusan.ValueMember   = "id_jurusan";
                 cmbjurusan.SelectedIndex = -1;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
                     "Gagal memuat data jurusan: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error
+                );
+            }
+        }
+
+        // =========================================================
+        // LOAD DATA GURU KE COMBOBOX WALI KELAS
+        // =========================================================
+        private void loadGuru()
+        {
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
+                {
+                    conn.Open();
+
+                    // Opsi pertama: kosong (wali kelas belum ditentukan)
+                    string sql = @"SELECT 0 AS id_guru, '-- Pilih Wali Kelas --' AS nama_guru
+                                   UNION ALL
+                                   SELECT id_guru, nama_guru
+                                   FROM guru
+                                   WHERE status = 'Aktif'
+                                   ORDER BY nama_guru ASC";
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(sql, conn);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    cmbwalikelas.DataSource    = dt;
+                    cmbwalikelas.DisplayMember = "nama_guru";
+                    cmbwalikelas.ValueMember   = "id_guru";
+                    cmbwalikelas.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Gagal memuat data guru: " + ex.Message,
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error
                 );
             }
         }
@@ -139,20 +145,18 @@ namespace ABSENSI_Juandi_rustiana
         // =========================================================
         private void Fkelas_Load(object sender, EventArgs e)
         {
-            // ComboBox Tingkat
             cmbtingkat.Items.Clear();
             cmbtingkat.Items.Add("X");
             cmbtingkat.Items.Add("XI");
             cmbtingkat.Items.Add("XII");
 
-            // ComboBox Status
             cmbstatus.Items.Clear();
             cmbstatus.Items.Add("Aktif");
             cmbstatus.Items.Add("Nonaktif");
             cmbstatus.SelectedIndex = 0;
 
-            // Load data
             loadJurusan();
+            loadGuru();
             tampilData();
         }
 
@@ -164,421 +168,307 @@ namespace ABSENSI_Juandi_rustiana
             idKelas = 0;
 
             txtnamakelas.Clear();
-            txtwalikelas.Clear();
 
-            cmbjurusan.SelectedIndex = -1;
-            cmbtingkat.SelectedIndex = -1;
-            cmbstatus.SelectedIndex = 0;
+            cmbjurusan.SelectedIndex  = -1;
+            cmbtingkat.SelectedIndex  = -1;
+            cmbstatus.SelectedIndex   = 0;
+
+            // Reset wali kelas ke baris pertama ("-- Pilih Wali Kelas --")
+            if (cmbwalikelas.Items.Count > 0)
+                cmbwalikelas.SelectedIndex = 0;
 
             txtnamakelas.Focus();
         }
 
         // =========================================================
-        // KLIK DATA PADA DATAGRIDVIEW
+        // KLIK BARIS DI GRID
         // =========================================================
         private void datagridview_CellContentClick(
-            object sender,
-            DataGridViewCellEventArgs e)
+            object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0)
-            {
-                return;
-            }
+            if (e.RowIndex < 0) return;
 
             try
             {
                 DataGridViewRow row = datagridview.Rows[e.RowIndex];
 
-                // Ambil ID kelas
-                idKelas = Convert.ToInt32(
-                    row.Cells["id_kelas"].Value
-                );
+                idKelas = Convert.ToInt32(row.Cells["id_kelas"].Value);
 
-                // Nama kelas
-                txtnamakelas.Text =
-                    row.Cells["nama_kelas"].Value?.ToString() ?? "";
+                txtnamakelas.Text  = row.Cells["nama_kelas"].Value?.ToString() ?? "";
+                cmbtingkat.Text    = row.Cells["tingkat"].Value?.ToString()    ?? "";
+                cmbstatus.Text     = row.Cells["status"].Value?.ToString()     ?? "";
 
-                // Tingkat
-                cmbtingkat.Text =
-                    row.Cells["tingkat"].Value?.ToString() ?? "";
-
-                // Wali kelas
-                txtwalikelas.Text =
-                    row.Cells["wali_kelas"].Value?.ToString() ?? "";
-
-                // Status
-                cmbstatus.Text =
-                    row.Cells["status"].Value?.ToString() ?? "";
-
-                // Jurusan
+                // Set jurusan
                 if (row.Cells["id_jurusan"].Value != null &&
                     row.Cells["id_jurusan"].Value != DBNull.Value)
                 {
-                    int idJurusan = Convert.ToInt32(
-                        row.Cells["id_jurusan"].Value
-                    );
-
-                    cmbjurusan.SelectedValue = idJurusan;
+                    cmbjurusan.SelectedValue =
+                        Convert.ToInt32(row.Cells["id_jurusan"].Value);
                 }
                 else
                 {
                     cmbjurusan.SelectedIndex = -1;
+                }
+
+                // Set wali kelas — cari berdasarkan id_wali_kelas
+                if (row.Cells["id_wali_kelas"].Value != null &&
+                    row.Cells["id_wali_kelas"].Value != DBNull.Value)
+                {
+                    int idWali = Convert.ToInt32(row.Cells["id_wali_kelas"].Value);
+
+                    // Cari baris yang ValueMember-nya == idWali
+                    for (int i = 0; i < cmbwalikelas.Items.Count; i++)
+                    {
+                        DataRowView drv = cmbwalikelas.Items[i] as DataRowView;
+                        if (drv != null &&
+                            Convert.ToInt32(drv["id_guru"]) == idWali)
+                        {
+                            cmbwalikelas.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
+                else
+                {
+                    cmbwalikelas.SelectedIndex = 0;
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
                     "Gagal memilih data kelas: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error
                 );
             }
         }
 
         // =========================================================
-        // SIMPAN DATA KELAS
+        // SIMPAN
         // =========================================================
         private void btnsimpan_Click(object sender, EventArgs e)
         {
-            // Validasi jurusan
             if (cmbjurusan.SelectedIndex == -1 ||
                 cmbjurusan.SelectedValue == null)
             {
-                MessageBox.Show(
-                    "Jurusan wajib dipilih!",
-                    "Peringatan",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
+                MessageBox.Show("Jurusan wajib dipilih!",
+                    "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Validasi nama dan tingkat
             if (string.IsNullOrWhiteSpace(txtnamakelas.Text) ||
                 string.IsNullOrWhiteSpace(cmbtingkat.Text))
             {
-                MessageBox.Show(
-                    "Nama kelas dan tingkat wajib diisi!",
-                    "Peringatan",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
+                MessageBox.Show("Nama kelas dan tingkat wajib diisi!",
+                    "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+
+            // Ambil id_wali_kelas (0 = tidak dipilih → simpan NULL)
+            int? idWali = null;
+            if (cmbwalikelas.SelectedIndex > 0 &&
+                cmbwalikelas.SelectedValue != null)
+            {
+                int val = Convert.ToInt32(cmbwalikelas.SelectedValue);
+                if (val > 0) idWali = val;
             }
 
             try
             {
-                if (db.koneksi.State == ConnectionState.Closed)
+                using (MySqlConnection conn = db.GetConnection())
                 {
-                    db.koneksi.Open();
+                    conn.Open();
+
+                    string sql = @"INSERT INTO kelas
+                                   (id_jurusan, nama_kelas, tingkat,
+                                    id_wali_kelas, status)
+                                   VALUES
+                                   (@id_jurusan, @nama, @tingkat,
+                                    @id_wali, @status)";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue(
+                            "@id_jurusan",
+                            Convert.ToInt32(cmbjurusan.SelectedValue)
+                        );
+                        cmd.Parameters.AddWithValue("@nama",    txtnamakelas.Text.Trim());
+                        cmd.Parameters.AddWithValue("@tingkat", cmbtingkat.Text);
+                        cmd.Parameters.AddWithValue(
+                            "@id_wali",
+                            idWali.HasValue ? (object)idWali.Value : DBNull.Value
+                        );
+                        cmd.Parameters.AddWithValue("@status",  cmbstatus.Text);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
 
-                string sql = @"
-                    INSERT INTO kelas
-                    (
-                        id_jurusan,
-                        nama_kelas,
-                        tingkat,
-                        wali_kelas,
-                        status
-                    )
-                    VALUES
-                    (
-                        @id_jurusan,
-                        @nama,
-                        @tingkat,
-                        @wali,
-                        @status
-                    )";
-
-                db.perintah = new MySqlCommand(
-                    sql,
-                    db.koneksi
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@id_jurusan",
-                    Convert.ToInt32(cmbjurusan.SelectedValue)
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@nama",
-                    txtnamakelas.Text.Trim()
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@tingkat",
-                    cmbtingkat.Text
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@wali",
-                    txtwalikelas.Text.Trim()
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@status",
-                    cmbstatus.Text
-                );
-
-                db.perintah.ExecuteNonQuery();
-
-                MessageBox.Show(
-                    "Data kelas berhasil disimpan!",
-                    "Informasi",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+                MessageBox.Show("Data kelas berhasil disimpan!",
+                    "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 kosongkan();
                 tampilData();
+            }
+            catch (MySqlException ex) when (ex.Number == 1062)
+            {
+                MessageBox.Show(
+                    "Nama kelas sudah ada dalam jurusan yang sama.",
+                    "Duplikat", MessageBoxButtons.OK, MessageBoxIcon.Warning
+                );
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
                     "Gagal menyimpan data kelas: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error
                 );
-            }
-            finally
-            {
-                if (db.koneksi.State == ConnectionState.Open)
-                {
-                    db.koneksi.Close();
-                }
             }
         }
 
         // =========================================================
-        // UBAH DATA KELAS
+        // UBAH
         // =========================================================
         private void btnubah_Click(object sender, EventArgs e)
         {
             if (idKelas == 0)
             {
-                MessageBox.Show(
-                    "Pilih data pada tabel terlebih dahulu!",
-                    "Peringatan",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
+                MessageBox.Show("Pilih data pada tabel terlebih dahulu!",
+                    "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Validasi jurusan
             if (cmbjurusan.SelectedIndex == -1 ||
                 cmbjurusan.SelectedValue == null)
             {
-                MessageBox.Show(
-                    "Jurusan wajib dipilih!",
-                    "Peringatan",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
+                MessageBox.Show("Jurusan wajib dipilih!",
+                    "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Validasi nama dan tingkat
             if (string.IsNullOrWhiteSpace(txtnamakelas.Text) ||
                 string.IsNullOrWhiteSpace(cmbtingkat.Text))
             {
-                MessageBox.Show(
-                    "Nama kelas dan tingkat wajib diisi!",
-                    "Peringatan",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
+                MessageBox.Show("Nama kelas dan tingkat wajib diisi!",
+                    "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
+            }
+
+            int? idWali = null;
+            if (cmbwalikelas.SelectedIndex > 0 &&
+                cmbwalikelas.SelectedValue != null)
+            {
+                int val = Convert.ToInt32(cmbwalikelas.SelectedValue);
+                if (val > 0) idWali = val;
             }
 
             try
             {
-                if (db.koneksi.State == ConnectionState.Closed)
+                using (MySqlConnection conn = db.GetConnection())
                 {
-                    db.koneksi.Open();
+                    conn.Open();
+
+                    string sql = @"UPDATE kelas SET
+                                   id_jurusan    = @id_jurusan,
+                                   nama_kelas    = @nama,
+                                   tingkat       = @tingkat,
+                                   id_wali_kelas = @id_wali,
+                                   status        = @status
+                                   WHERE id_kelas = @id";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue(
+                            "@id_jurusan",
+                            Convert.ToInt32(cmbjurusan.SelectedValue)
+                        );
+                        cmd.Parameters.AddWithValue("@nama",    txtnamakelas.Text.Trim());
+                        cmd.Parameters.AddWithValue("@tingkat", cmbtingkat.Text);
+                        cmd.Parameters.AddWithValue(
+                            "@id_wali",
+                            idWali.HasValue ? (object)idWali.Value : DBNull.Value
+                        );
+                        cmd.Parameters.AddWithValue("@status",  cmbstatus.Text);
+                        cmd.Parameters.AddWithValue("@id",      idKelas);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
 
-                string sql = @"
-                    UPDATE kelas SET
-                        id_jurusan = @id_jurusan,
-                        nama_kelas = @nama,
-                        tingkat = @tingkat,
-                        wali_kelas = @wali,
-                        status = @status
-                    WHERE id_kelas = @id";
-
-                db.perintah = new MySqlCommand(
-                    sql,
-                    db.koneksi
-                );
-
-                // INI YANG SEBELUMNYA BELUM ADA
-                db.perintah.Parameters.AddWithValue(
-                    "@id_jurusan",
-                    Convert.ToInt32(cmbjurusan.SelectedValue)
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@nama",
-                    txtnamakelas.Text.Trim()
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@tingkat",
-                    cmbtingkat.Text
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@wali",
-                    txtwalikelas.Text.Trim()
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@status",
-                    cmbstatus.Text
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@id",
-                    idKelas
-                );
-
-                db.perintah.ExecuteNonQuery();
-
-                MessageBox.Show(
-                    "Data kelas berhasil diubah!",
-                    "Informasi",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+                MessageBox.Show("Data kelas berhasil diubah!",
+                    "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 kosongkan();
                 tampilData();
+            }
+            catch (MySqlException ex) when (ex.Number == 1062)
+            {
+                MessageBox.Show(
+                    "Nama kelas sudah ada dalam jurusan yang sama.",
+                    "Duplikat", MessageBoxButtons.OK, MessageBoxIcon.Warning
+                );
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
                     "Gagal mengubah data kelas: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error
                 );
-            }
-            finally
-            {
-                if (db.koneksi.State == ConnectionState.Open)
-                {
-                    db.koneksi.Close();
-                }
             }
         }
 
         // =========================================================
-        // HAPUS DATA KELAS
+        // HAPUS
         // =========================================================
         private void btnhapus_Click_1(object sender, EventArgs e)
         {
             if (idKelas == 0)
             {
-                MessageBox.Show(
-                    "Pilih data pada tabel terlebih dahulu!",
-                    "Peringatan",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
+                MessageBox.Show("Pilih data pada tabel terlebih dahulu!",
+                    "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             DialogResult konfirmasi = MessageBox.Show(
                 "Yakin ingin menghapus data kelas ini?",
-                "Konfirmasi",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question
+                "Konfirmasi", MessageBoxButtons.YesNo, MessageBoxIcon.Question
             );
 
-            if (konfirmasi != DialogResult.Yes)
-            {
-                return;
-            }
+            if (konfirmasi != DialogResult.Yes) return;
 
             try
             {
-                if (db.koneksi.State == ConnectionState.Closed)
+                using (MySqlConnection conn = db.GetConnection())
                 {
-                    db.koneksi.Open();
+                    conn.Open();
+
+                    string sql = "DELETE FROM kelas WHERE id_kelas = @id";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", idKelas);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
 
-                string sql =
-                    "DELETE FROM kelas WHERE id_kelas = @id";
-
-                db.perintah = new MySqlCommand(
-                    sql,
-                    db.koneksi
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@id",
-                    idKelas
-                );
-
-                db.perintah.ExecuteNonQuery();
-
-                MessageBox.Show(
-                    "Data kelas berhasil dihapus!",
-                    "Informasi",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
+                MessageBox.Show("Data kelas berhasil dihapus!",
+                    "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 kosongkan();
                 tampilData();
             }
-            catch (MySqlException ex)
+            catch (MySqlException ex) when (ex.Number == 1451)
             {
-                // Kemungkinan kelas masih digunakan oleh siswa
-                if (ex.Number == 1451)
-                {
-                    MessageBox.Show(
-                        "Data kelas tidak dapat dihapus karena masih digunakan oleh data siswa.",
-                        "Peringatan",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning
-                    );
-                }
-                else
-                {
-                    MessageBox.Show(
-                        "Gagal menghapus data kelas: " + ex.Message,
-                        "Error",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                    );
-                }
+                MessageBox.Show(
+                    "Data kelas tidak dapat dihapus karena masih\n" +
+                    "digunakan oleh data siswa atau jadwal.",
+                    "Tidak Dapat Dihapus",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning
+                );
             }
             catch (Exception ex)
             {
                 MessageBox.Show(
                     "Gagal menghapus data kelas: " + ex.Message,
-                    "Error",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error
                 );
-            }
-            finally
-            {
-                if (db.koneksi.State == ConnectionState.Open)
-                {
-                    db.koneksi.Close();
-                }
             }
         }
 
@@ -592,21 +482,9 @@ namespace ABSENSI_Juandi_rustiana
             this.Hide();
         }
 
-        // =========================================================
-        // EVENT TEXTBOX
-        // =========================================================
-        private void txtnamakelas_TextChanged(object sender, EventArgs e)
-        {
-        }
+        private void txtnamakelas_TextChanged(object sender, EventArgs e) { }
 
-        // =========================================================
-        // EVENT COMBOBOX JURUSAN
-        // =========================================================
-        private void cmbjurusan_SelectedIndexChanged(
-            object sender,
-            EventArgs e)
-        {
-        }
+        private void cmbjurusan_SelectedIndexChanged(object sender, EventArgs e) { }
 
         private void btnbatal_Click(object sender, EventArgs e)
         {

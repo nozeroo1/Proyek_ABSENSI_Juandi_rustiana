@@ -36,7 +36,7 @@ namespace ABSENSI_Juandi_rustiana
             this.cmbjurusan    = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtnamakelas  = new Guna.UI2.WinForms.Guna2TextBox();
             this.cmbtingkat    = new Guna.UI2.WinForms.Guna2ComboBox();
-            this.txtwalikelas  = new Guna.UI2.WinForms.Guna2TextBox();
+            this.cmbwalikelas  = new Guna.UI2.WinForms.Guna2ComboBox(); // diganti dari TextBox
             this.cmbstatus     = new Guna.UI2.WinForms.Guna2ComboBox();
 
             // Labels
@@ -165,7 +165,7 @@ namespace ABSENSI_Juandi_rustiana
             this.cardForm.Controls.Add(this.guna2HtmlLabel3);
             this.cardForm.Controls.Add(this.cmbtingkat);
             this.cardForm.Controls.Add(this.guna2HtmlLabel4);
-            this.cardForm.Controls.Add(this.txtwalikelas);
+            this.cardForm.Controls.Add(this.cmbwalikelas);
             this.cardForm.Controls.Add(this.guna2HtmlLabel5);
             this.cardForm.Controls.Add(this.cmbstatus);
             this.cardForm.Controls.Add(this.btnsimpan);
@@ -253,7 +253,7 @@ namespace ABSENSI_Juandi_rustiana
             this.cmbtingkat.Size = new System.Drawing.Size(240, 36);
             this.cmbtingkat.TabIndex = 3;
 
-            // Wali Kelas
+            // Wali Kelas — ComboBox (mengambil data dari tabel guru)
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.guna2HtmlLabel4.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
@@ -263,19 +263,19 @@ namespace ABSENSI_Juandi_rustiana
             this.guna2HtmlLabel4.TabIndex = 3;
             this.guna2HtmlLabel4.Text = "Wali Kelas";
 
-            this.txtwalikelas.BorderColor = System.Drawing.Color.FromArgb(203, 213, 225);
-            this.txtwalikelas.BorderRadius = 8;
-            this.txtwalikelas.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtwalikelas.DefaultText = "";
-            this.txtwalikelas.FocusedState.BorderColor = System.Drawing.Color.FromArgb(37, 99, 235);
-            this.txtwalikelas.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.txtwalikelas.HoverState.BorderColor = System.Drawing.Color.FromArgb(37, 99, 235);
-            this.txtwalikelas.Location = new System.Drawing.Point(800, 44);
-            this.txtwalikelas.Name = "txtwalikelas";
-            this.txtwalikelas.PlaceholderText = "Nama wali kelas";
-            this.txtwalikelas.SelectedText = "";
-            this.txtwalikelas.Size = new System.Drawing.Size(240, 36);
-            this.txtwalikelas.TabIndex = 4;
+            this.cmbwalikelas.BackColor = System.Drawing.Color.Transparent;
+            this.cmbwalikelas.BorderColor = System.Drawing.Color.FromArgb(203, 213, 225);
+            this.cmbwalikelas.BorderRadius = 8;
+            this.cmbwalikelas.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbwalikelas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbwalikelas.FocusedColor = System.Drawing.Color.FromArgb(37, 99, 235);
+            this.cmbwalikelas.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbwalikelas.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.cmbwalikelas.ItemHeight = 30;
+            this.cmbwalikelas.Location = new System.Drawing.Point(800, 44);
+            this.cmbwalikelas.Name = "cmbwalikelas";
+            this.cmbwalikelas.Size = new System.Drawing.Size(240, 36);
+            this.cmbwalikelas.TabIndex = 4;
 
             // Row 2 — Status
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
@@ -454,7 +454,7 @@ namespace ABSENSI_Juandi_rustiana
         private Guna.UI2.WinForms.Guna2ComboBox cmbjurusan;
         private Guna.UI2.WinForms.Guna2TextBox txtnamakelas;
         private Guna.UI2.WinForms.Guna2ComboBox cmbtingkat;
-        private Guna.UI2.WinForms.Guna2TextBox txtwalikelas;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbwalikelas;
         private Guna.UI2.WinForms.Guna2ComboBox cmbstatus;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -14,34 +8,28 @@ namespace ABSENSI_Juandi_rustiana
     public partial class Fmapel : Form
     {
         private int idMapel = 0;
+
         public Fmapel()
         {
             InitializeComponent();
         }
 
+        // =========================================================
+        // FORM LOAD
+        // =========================================================
         private void Fmapel_Load(object sender, EventArgs e)
         {
             cmbstatus.Items.Clear();
             cmbstatus.Items.Add("Aktif");
             cmbstatus.Items.Add("Nonaktif");
-
             cmbstatus.SelectedIndex = 0;
 
             tampilData();
         }
 
-        private void kosongkan()
-        {
-            idMapel = 0;
-
-            txtkode.Clear();
-            txtnama.Clear();
-
-            cmbstatus.SelectedIndex = 0;
-
-            txtkode.Focus();
-        }
-
+        // =========================================================
+        // TAMPIL DATA
+        // =========================================================
         private void tampilData()
         {
             try
@@ -54,17 +42,23 @@ namespace ABSENSI_Juandi_rustiana
                           FROM mapel
                           ORDER BY id_mapel DESC");
 
-                dgvmapel.DataSource = db.ds.Tables[0];
-
+                dgvmapel.DataSource        = db.ds.Tables[0];
                 dgvmapel.AutoSizeColumnsMode =
                     DataGridViewAutoSizeColumnsMode.Fill;
-
-                dgvmapel.SelectionMode =
+                dgvmapel.SelectionMode     =
                     DataGridViewSelectionMode.FullRowSelect;
-
-                dgvmapel.MultiSelect = false;
-                dgvmapel.ReadOnly = true;
+                dgvmapel.MultiSelect        = false;
+                dgvmapel.ReadOnly           = true;
                 dgvmapel.AllowUserToAddRows = false;
+
+                if (dgvmapel.Columns.Contains("id_mapel"))
+                    dgvmapel.Columns["id_mapel"].Visible = false;
+                if (dgvmapel.Columns.Contains("kode_mapel"))
+                    dgvmapel.Columns["kode_mapel"].HeaderText = "Kode";
+                if (dgvmapel.Columns.Contains("nama_mapel"))
+                    dgvmapel.Columns["nama_mapel"].HeaderText = "Nama Mata Pelajaran";
+                if (dgvmapel.Columns.Contains("status"))
+                    dgvmapel.Columns["status"].HeaderText = "Status";
             }
             catch (Exception ex)
             {
@@ -77,9 +71,40 @@ namespace ABSENSI_Juandi_rustiana
             }
         }
 
+        // =========================================================
+        // KOSONGKAN FORM
+        // =========================================================
+        private void kosongkan()
+        {
+            idMapel = 0;
+            txtkode.Clear();
+            txtnama.Clear();
+            cmbstatus.SelectedIndex = 0;
+            txtkode.Focus();
+        }
+
+        // =========================================================
+        // KLIK BARIS DI GRID
+        // =========================================================
+        private void dgvmapel_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex < 0) return;
+
+            DataGridViewRow row = dgvmapel.Rows[e.RowIndex];
+
+            idMapel = Convert.ToInt32(row.Cells["id_mapel"].Value);
+            txtkode.Text     = row.Cells["kode_mapel"].Value?.ToString() ?? "";
+            txtnama.Text     = row.Cells["nama_mapel"].Value?.ToString() ?? "";
+            cmbstatus.Text   = row.Cells["status"].Value?.ToString()    ?? "";
+        }
+
+        // =========================================================
+        // SIMPAN
+        // =========================================================
         private void btnsimpan_Click(object sender, EventArgs e)
         {
-            if (txtkode.Text == "" || txtnama.Text == "")
+            if (string.IsNullOrWhiteSpace(txtkode.Text) ||
+                string.IsNullOrWhiteSpace(txtnama.Text))
             {
                 MessageBox.Show(
                     "Kode dan nama mata pelajaran wajib diisi!",
@@ -87,43 +112,28 @@ namespace ABSENSI_Juandi_rustiana
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
                 );
-
                 return;
             }
 
             try
             {
-                if (db.koneksi.State == ConnectionState.Closed)
+                using (MySqlConnection conn = db.GetConnection())
                 {
-                    db.koneksi.Open();
+                    conn.Open();
+
+                    string sql = @"INSERT INTO mapel
+                                   (kode_mapel, nama_mapel, status)
+                                   VALUES
+                                   (@kode, @nama, @status)";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@kode",   txtkode.Text.Trim().ToUpper());
+                        cmd.Parameters.AddWithValue("@nama",   txtnama.Text.Trim());
+                        cmd.Parameters.AddWithValue("@status", cmbstatus.Text);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
-
-                string sql = @"INSERT INTO mapel
-                               (kode_mapel, nama_mapel, status)
-                               VALUES
-                               (@kode, @nama, @status)";
-
-                db.perintah = new MySqlCommand(
-                    sql,
-                    db.koneksi
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@kode",
-                    txtkode.Text
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@nama",
-                    txtnama.Text
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@status",
-                    cmbstatus.Text
-                );
-
-                db.perintah.ExecuteNonQuery();
 
                 MessageBox.Show(
                     "Data mata pelajaran berhasil disimpan!",
@@ -135,6 +145,15 @@ namespace ABSENSI_Juandi_rustiana
                 kosongkan();
                 tampilData();
             }
+            catch (MySqlException ex) when (ex.Number == 1062)
+            {
+                MessageBox.Show(
+                    "Kode mata pelajaran sudah digunakan. Gunakan kode yang berbeda.",
+                    "Duplikat Kode",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(
@@ -144,37 +163,11 @@ namespace ABSENSI_Juandi_rustiana
                     MessageBoxIcon.Error
                 );
             }
-            finally
-            {
-                if (db.koneksi.State == ConnectionState.Open)
-                {
-                    db.koneksi.Close();
-                }
-            }
         }
 
-        private void dgvmapel_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                DataGridViewRow row =
-                    dgvmapel.Rows[e.RowIndex];
-
-                idMapel = Convert.ToInt32(
-                    row.Cells["id_mapel"].Value
-                );
-
-                txtkode.Text =
-                    row.Cells["kode_mapel"].Value.ToString();
-
-                txtnama.Text =
-                    row.Cells["nama_mapel"].Value.ToString();
-
-                cmbstatus.Text =
-                    row.Cells["status"].Value.ToString();
-            }
-        }
-
+        // =========================================================
+        // UBAH
+        // =========================================================
         private void btnubah_Click(object sender, EventArgs e)
         {
             if (idMapel == 0)
@@ -185,11 +178,11 @@ namespace ABSENSI_Juandi_rustiana
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
                 );
-
                 return;
             }
 
-            if (txtkode.Text == "" || txtnama.Text == "")
+            if (string.IsNullOrWhiteSpace(txtkode.Text) ||
+                string.IsNullOrWhiteSpace(txtnama.Text))
             {
                 MessageBox.Show(
                     "Kode dan nama mata pelajaran wajib diisi!",
@@ -197,49 +190,30 @@ namespace ABSENSI_Juandi_rustiana
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
                 );
-
                 return;
             }
 
             try
             {
-                if (db.koneksi.State == ConnectionState.Closed)
+                using (MySqlConnection conn = db.GetConnection())
                 {
-                    db.koneksi.Open();
+                    conn.Open();
+
+                    string sql = @"UPDATE mapel SET
+                                   kode_mapel = @kode,
+                                   nama_mapel = @nama,
+                                   status     = @status
+                                   WHERE id_mapel = @id";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@kode",   txtkode.Text.Trim().ToUpper());
+                        cmd.Parameters.AddWithValue("@nama",   txtnama.Text.Trim());
+                        cmd.Parameters.AddWithValue("@status", cmbstatus.Text);
+                        cmd.Parameters.AddWithValue("@id",     idMapel);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
-
-                string sql = @"UPDATE mapel SET
-                               kode_mapel = @kode,
-                               nama_mapel = @nama,
-                               status = @status
-                               WHERE id_mapel = @id";
-
-                db.perintah = new MySqlCommand(
-                    sql,
-                    db.koneksi
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@kode",
-                    txtkode.Text
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@nama",
-                    txtnama.Text
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@status",
-                    cmbstatus.Text
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@id",
-                    idMapel
-                );
-
-                db.perintah.ExecuteNonQuery();
 
                 MessageBox.Show(
                     "Data mata pelajaran berhasil diubah!",
@@ -251,6 +225,15 @@ namespace ABSENSI_Juandi_rustiana
                 kosongkan();
                 tampilData();
             }
+            catch (MySqlException ex) when (ex.Number == 1062)
+            {
+                MessageBox.Show(
+                    "Kode mata pelajaran sudah digunakan. Gunakan kode yang berbeda.",
+                    "Duplikat Kode",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(
@@ -260,15 +243,11 @@ namespace ABSENSI_Juandi_rustiana
                     MessageBoxIcon.Error
                 );
             }
-            finally
-            {
-                if (db.koneksi.State == ConnectionState.Open)
-                {
-                    db.koneksi.Close();
-                }
-            }
         }
 
+        // =========================================================
+        // HAPUS
+        // =========================================================
         private void btnhapus_Click(object sender, EventArgs e)
         {
             if (idMapel == 0)
@@ -279,7 +258,6 @@ namespace ABSENSI_Juandi_rustiana
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning
                 );
-
                 return;
             }
 
@@ -290,32 +268,22 @@ namespace ABSENSI_Juandi_rustiana
                 MessageBoxIcon.Question
             );
 
-            if (konfirmasi != DialogResult.Yes)
-            {
-                return;
-            }
+            if (konfirmasi != DialogResult.Yes) return;
 
             try
             {
-                if (db.koneksi.State == ConnectionState.Closed)
+                using (MySqlConnection conn = db.GetConnection())
                 {
-                    db.koneksi.Open();
+                    conn.Open();
+
+                    string sql = "DELETE FROM mapel WHERE id_mapel = @id";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@id", idMapel);
+                        cmd.ExecuteNonQuery();
+                    }
                 }
-
-                string sql =
-                    "DELETE FROM mapel WHERE id_mapel = @id";
-
-                db.perintah = new MySqlCommand(
-                    sql,
-                    db.koneksi
-                );
-
-                db.perintah.Parameters.AddWithValue(
-                    "@id",
-                    idMapel
-                );
-
-                db.perintah.ExecuteNonQuery();
 
                 MessageBox.Show(
                     "Data mata pelajaran berhasil dihapus!",
@@ -327,6 +295,16 @@ namespace ABSENSI_Juandi_rustiana
                 kosongkan();
                 tampilData();
             }
+            catch (MySqlException ex) when (ex.Number == 1451)
+            {
+                MessageBox.Show(
+                    "Data mata pelajaran tidak dapat dihapus karena masih\n" +
+                    "digunakan pada jadwal pelajaran.",
+                    "Tidak Dapat Dihapus",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+            }
             catch (Exception ex)
             {
                 MessageBox.Show(
@@ -336,15 +314,11 @@ namespace ABSENSI_Juandi_rustiana
                     MessageBoxIcon.Error
                 );
             }
-            finally
-            {
-                if (db.koneksi.State == ConnectionState.Open)
-                {
-                    db.koneksi.Close();
-                }
-            }
         }
 
+        // =========================================================
+        // KEMBALI
+        // =========================================================
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             Fadmin halaman = new Fadmin();

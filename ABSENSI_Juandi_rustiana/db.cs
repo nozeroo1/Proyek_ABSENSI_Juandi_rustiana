@@ -1,31 +1,57 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
+using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
-using System.Data;
+
+
 
 namespace ABSENSI_Juandi_rustiana
 {
-    class db
+    /// <summary>
+    /// Kelas helper koneksi dan query database.
+    /// Connection string dibaca dari App.config (key "DbAbsensi").
+    /// </summary>
+    static class db
     {
-        public static MySqlConnection koneksi = new MySqlConnection("server = 127.0.0.1; username='root'; password =''; database = 'db_absensi';");
-        public static DataSet ds = new DataSet();
-        public static MySqlDataAdapter da;
-        public static MySqlCommand perintah;
+        // ── Connection string dari App.config ─────────────────────────────────
+        private static readonly string _connStr =
+            ConfigurationManager.ConnectionStrings["DbAbsensi"].ConnectionString;
 
-        public static void crud(string naon)
+        // ── Objek global yang dipakai oleh form-form lama (backward-compat) ───
+        public static MySqlConnection koneksi = new MySqlConnection(_connStr);
+        public static DataSet         ds      = new DataSet();
+        public static MySqlDataAdapter da;
+        public static MySqlCommand     perintah;
+
+        // ── Helper: buka koneksi baru (dipakai oleh kode baru) ────────────────
+        public static MySqlConnection GetConnection()
         {
-            Console.WriteLine(naon);
-            ds.Tables.Clear();
-            perintah = new MySqlCommand(naon, koneksi);
-            da = new MySqlDataAdapter(perintah);
-            da.Fill(ds);
+            return new MySqlConnection(_connStr);
+        }
+
+        /// <summary>
+        /// Jalankan query SELECT dan simpan hasilnya ke ds.Tables[0].
+        /// Dipakai oleh form-form lama yang mengakses db.ds secara langsung.
+        /// </summary>
+        public static void crud(string sql)
+        {
+            try
+            {
+                ds.Tables.Clear();
+                perintah = new MySqlCommand(sql, koneksi);
+                da       = new MySqlDataAdapter(perintah);
+                da.Fill(ds);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Gagal menjalankan query: " + ex.Message,
+                    "Error Database",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
         }
     }
-
-    
-
 }

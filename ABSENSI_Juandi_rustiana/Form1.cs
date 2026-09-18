@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient;
 
 namespace ABSENSI_Juandi_rustiana
 {
@@ -19,55 +14,109 @@ namespace ABSENSI_Juandi_rustiana
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
+        // =========================================================
+        // LOGIN — parameterized query (tidak ada SQL Injection)
+        // =========================================================
         private void BTNLOG_Click(object sender, EventArgs e)
         {
-            db.crud($"select * from users where username = '{textBox1.Text}' && password = '{textBox2.Text}'");
+            string username = textBox1.Text.Trim();
+            string password = textBox2.Text;
 
-            int cekbaris = db.ds.Tables[0].Rows.Count;
-            if (cekbaris == 1)
+            if (username == "" || password == "")
             {
-                string nama = db.ds.Tables[0].Rows[0]["nama"].ToString();
-                string role = db.ds.Tables[0].Rows[0]["role"].ToString();
-             
-                if (role == "admin")
+                MessageBox.Show(
+                    "Username dan password wajib diisi!",
+                    "Peringatan",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning
+                );
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection conn = db.GetConnection())
                 {
-                    Fadmin halaman = new Fadmin();
-                    halaman.Show();
-                    this.Hide();
-                }else if (role == "petugas")
-                {
-                    Fpetugas halaman = new Fpetugas();
-                    halaman.Show();
-                    this.Hide();
+                    conn.Open();
+
+                    // Parameterized query — aman dari SQL Injection
+                    string sql = @"SELECT id_user, nama, role
+                                   FROM users
+                                   WHERE username = @username
+                                     AND password = @password
+                                   LIMIT 1";
+
+                    using (MySqlCommand cmd = new MySqlCommand(sql, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
+
+                        using (MySqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                string role = reader["role"].ToString();
+
+                                if (role == "admin")
+                                {
+                                    Fadmin halaman = new Fadmin();
+                                    halaman.Show();
+                                    this.Hide();
+                                }
+                                else if (role == "petugas")
+                                {
+                                    Fpetugas halaman = new Fpetugas();
+                                    halaman.Show();
+                                    this.Hide();
+                                }
+                                else
+                                {
+                                    MessageBox.Show(
+                                        "Role tidak dikenali. Hubungi administrator.",
+                                        "Error",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error
+                                    );
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show(
+                                    "Username atau password salah!",
+                                    "Login Gagal",
+                                    MessageBoxButtons.OK,
+                                    MessageBoxIcon.Warning
+                                );
+
+                                textBox2.Clear();
+                                textBox2.Focus();
+                            }
+                        }
+                    }
                 }
-                
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("username/password salah");
+                MessageBox.Show(
+                    "Gagal terhubung ke database: " + ex.Message,
+                    "Error Koneksi",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
-
-
-
-
-
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter) && textBox1.Text != "")
             {
-               
                 textBox2.Select();
-                
             }
         }
 
@@ -82,7 +131,6 @@ namespace ABSENSI_Juandi_rustiana
 
         private void BTNLOG_KeyPress(object sender, KeyPressEventArgs e)
         {
-
         }
     }
 }

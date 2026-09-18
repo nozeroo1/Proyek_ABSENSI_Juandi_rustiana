@@ -33,6 +33,7 @@ namespace ABSENSI_Juandi_rustiana
             this.dgvjadwal        = new Guna.UI2.WinForms.Guna2DataGridView();
 
             // Inputs — row 1
+            this.cmbajaran = new Guna.UI2.WinForms.Guna2ComboBox(); // BARU
             this.cmbhari   = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dtmulai   = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.dtselesai = new Guna.UI2.WinForms.Guna2DateTimePicker();
@@ -43,6 +44,7 @@ namespace ABSENSI_Juandi_rustiana
 
             // Labels
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.lblAjaran       = new Guna.UI2.WinForms.Guna2HtmlLabel(); // BARU
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -156,6 +158,8 @@ namespace ABSENSI_Juandi_rustiana
             this.cardForm.Controls.Add(this.dtmulai);
             this.cardForm.Controls.Add(this.guna2HtmlLabel4);
             this.cardForm.Controls.Add(this.dtselesai);
+            this.cardForm.Controls.Add(this.lblAjaran);
+            this.cardForm.Controls.Add(this.cmbajaran);
             this.cardForm.Controls.Add(this.guna2HtmlLabel5);
             this.cardForm.Controls.Add(this.cmbkelas);
             this.cardForm.Controls.Add(this.guna2HtmlLabel7);
@@ -168,7 +172,7 @@ namespace ABSENSI_Juandi_rustiana
             this.cardForm.Controls.Add(this.btnbatal);
             this.cardForm.Dock = System.Windows.Forms.DockStyle.Top;
             this.cardForm.Name = "cardForm";
-            this.cardForm.Size = new System.Drawing.Size(1062, 252);
+            this.cardForm.Size = new System.Drawing.Size(1062, 300); // diperlebar untuk row ajaran
             this.cardForm.TabIndex = 0;
 
             // Row 1 labels
@@ -243,6 +247,30 @@ namespace ABSENSI_Juandi_rustiana
             this.dtselesai.TabIndex = 3;
             this.dtselesai.Value = new System.DateTime(2026, 1, 1, 8, 0, 0, 0);
 
+            // Tahun Ajaran — di sebelah kanan Jam Selesai
+            this.lblAjaran.BackColor = System.Drawing.Color.Transparent;
+            this.lblAjaran.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblAjaran.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
+            this.lblAjaran.Location = new System.Drawing.Point(800, 20);
+            this.lblAjaran.Name = "lblAjaran";
+            this.lblAjaran.Size = new System.Drawing.Size(90, 19);
+            this.lblAjaran.TabIndex = 3;
+            this.lblAjaran.Text = "Tahun Ajaran";
+
+            this.cmbajaran.BackColor = System.Drawing.Color.Transparent;
+            this.cmbajaran.BorderColor = System.Drawing.Color.FromArgb(203, 213, 225);
+            this.cmbajaran.BorderRadius = 8;
+            this.cmbajaran.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbajaran.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbajaran.FocusedColor = System.Drawing.Color.FromArgb(37, 99, 235);
+            this.cmbajaran.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cmbajaran.ForeColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.cmbajaran.ItemHeight = 30;
+            this.cmbajaran.Location = new System.Drawing.Point(800, 44);
+            this.cmbajaran.Name = "cmbajaran";
+            this.cmbajaran.Size = new System.Drawing.Size(240, 36);
+            this.cmbajaran.TabIndex = 4;
+
             // Row 2 labels
             this.guna2HtmlLabel5.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel5.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
@@ -250,7 +278,7 @@ namespace ABSENSI_Juandi_rustiana
             this.guna2HtmlLabel5.Location = new System.Drawing.Point(16, 100);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
             this.guna2HtmlLabel5.Size = new System.Drawing.Size(36, 19);
-            this.guna2HtmlLabel5.TabIndex = 3;
+            this.guna2HtmlLabel5.TabIndex = 4;
             this.guna2HtmlLabel5.Text = "Kelas";
 
             this.cmbkelas.BackColor = System.Drawing.Color.Transparent;
@@ -265,7 +293,7 @@ namespace ABSENSI_Juandi_rustiana
             this.cmbkelas.Location = new System.Drawing.Point(16, 124);
             this.cmbkelas.Name = "cmbkelas";
             this.cmbkelas.Size = new System.Drawing.Size(240, 36);
-            this.cmbkelas.TabIndex = 4;
+            this.cmbkelas.TabIndex = 5;
 
             this.guna2HtmlLabel7.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel7.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
@@ -273,7 +301,7 @@ namespace ABSENSI_Juandi_rustiana
             this.guna2HtmlLabel7.Location = new System.Drawing.Point(280, 100);
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
             this.guna2HtmlLabel7.Size = new System.Drawing.Size(90, 19);
-            this.guna2HtmlLabel7.TabIndex = 4;
+            this.guna2HtmlLabel7.TabIndex = 5;
             this.guna2HtmlLabel7.Text = "Mata Pelajaran";
 
             this.cmbmapel.BackColor = System.Drawing.Color.Transparent;
@@ -288,7 +316,7 @@ namespace ABSENSI_Juandi_rustiana
             this.cmbmapel.Location = new System.Drawing.Point(280, 124);
             this.cmbmapel.Name = "cmbmapel";
             this.cmbmapel.Size = new System.Drawing.Size(240, 36);
-            this.cmbmapel.TabIndex = 5;
+            this.cmbmapel.TabIndex = 6;
 
             this.guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel8.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
@@ -296,7 +324,7 @@ namespace ABSENSI_Juandi_rustiana
             this.guna2HtmlLabel8.Location = new System.Drawing.Point(540, 100);
             this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
             this.guna2HtmlLabel8.Size = new System.Drawing.Size(35, 19);
-            this.guna2HtmlLabel8.TabIndex = 5;
+            this.guna2HtmlLabel8.TabIndex = 6;
             this.guna2HtmlLabel8.Text = "Guru";
 
             this.cmbguru.BackColor = System.Drawing.Color.Transparent;
@@ -311,7 +339,7 @@ namespace ABSENSI_Juandi_rustiana
             this.cmbguru.Location = new System.Drawing.Point(540, 124);
             this.cmbguru.Name = "cmbguru";
             this.cmbguru.Size = new System.Drawing.Size(240, 36);
-            this.cmbguru.TabIndex = 6;
+            this.cmbguru.TabIndex = 7;
 
             // Buttons
             this.guna2Button1.BorderRadius = 8;
@@ -319,10 +347,10 @@ namespace ABSENSI_Juandi_rustiana
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.HoverState.FillColor = System.Drawing.Color.FromArgb(29, 78, 216);
-            this.guna2Button1.Location = new System.Drawing.Point(16, 200);
+            this.guna2Button1.Location = new System.Drawing.Point(16, 248);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(120, 40);
-            this.guna2Button1.TabIndex = 7;
+            this.guna2Button1.TabIndex = 8;
             this.guna2Button1.Text = "Simpan";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
 
@@ -331,10 +359,10 @@ namespace ABSENSI_Juandi_rustiana
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
             this.guna2Button2.HoverState.FillColor = System.Drawing.Color.FromArgb(15, 23, 42);
-            this.guna2Button2.Location = new System.Drawing.Point(148, 200);
+            this.guna2Button2.Location = new System.Drawing.Point(148, 248);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(120, 40);
-            this.guna2Button2.TabIndex = 8;
+            this.guna2Button2.TabIndex = 9;
             this.guna2Button2.Text = "Ubah";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
 
@@ -343,10 +371,10 @@ namespace ABSENSI_Juandi_rustiana
             this.guna2Button3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.guna2Button3.ForeColor = System.Drawing.Color.White;
             this.guna2Button3.HoverState.FillColor = System.Drawing.Color.FromArgb(185, 28, 28);
-            this.guna2Button3.Location = new System.Drawing.Point(280, 200);
+            this.guna2Button3.Location = new System.Drawing.Point(280, 248);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(120, 40);
-            this.guna2Button3.TabIndex = 9;
+            this.guna2Button3.TabIndex = 10;
             this.guna2Button3.Text = "Hapus";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
 
@@ -357,10 +385,10 @@ namespace ABSENSI_Juandi_rustiana
             this.btnbatal.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnbatal.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
             this.btnbatal.HoverState.FillColor = System.Drawing.Color.FromArgb(241, 245, 249);
-            this.btnbatal.Location = new System.Drawing.Point(412, 200);
+            this.btnbatal.Location = new System.Drawing.Point(412, 248);
             this.btnbatal.Name = "btnbatal";
             this.btnbatal.Size = new System.Drawing.Size(120, 40);
-            this.btnbatal.TabIndex = 10;
+            this.btnbatal.TabIndex = 11;
             this.btnbatal.Text = "Batal";
             this.btnbatal.Click += new System.EventHandler(this.btnbatal_Click);
 
@@ -457,6 +485,7 @@ namespace ABSENSI_Juandi_rustiana
         private Guna.UI2.WinForms.Guna2Panel cardForm;
         private Guna.UI2.WinForms.Guna2Panel cardGrid;
         private Guna.UI2.WinForms.Guna2DataGridView dgvjadwal;
+        private Guna.UI2.WinForms.Guna2ComboBox cmbajaran;
         private Guna.UI2.WinForms.Guna2ComboBox cmbhari;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtmulai;
         private Guna.UI2.WinForms.Guna2DateTimePicker dtselesai;
@@ -464,6 +493,7 @@ namespace ABSENSI_Juandi_rustiana
         private Guna.UI2.WinForms.Guna2ComboBox cmbmapel;
         private Guna.UI2.WinForms.Guna2ComboBox cmbguru;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel lblAjaran;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel5;

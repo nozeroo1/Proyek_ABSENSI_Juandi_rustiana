@@ -183,6 +183,7 @@ namespace ABSENSI_Juandi_rustiana
             this.dts.Size = new System.Drawing.Size(300, 36);
             this.dts.TabIndex = 1;
             this.dts.Value = new System.DateTime(2026, 8, 28, 0, 0, 0, 0);
+            this.dts.ValueChanged += new System.EventHandler(this.dts_ValueChanged);
 
             this.lblKelas.AutoSize = true;
             this.lblKelas.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);

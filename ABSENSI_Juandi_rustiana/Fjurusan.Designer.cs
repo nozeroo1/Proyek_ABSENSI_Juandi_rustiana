@@ -41,6 +41,8 @@ namespace ABSENSI_Juandi_rustiana
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
 
             this.btnsimpan    = new Guna.UI2.WinForms.Guna2Button();
+            this.btnubah      = new Guna.UI2.WinForms.Guna2Button(); // Ubah
+            this.btnhapus     = new Guna.UI2.WinForms.Guna2Button(); // Hapus
             this.btnkosongkan = new Guna.UI2.WinForms.Guna2Button(); // Batal
 
             this.panelSidebar.SuspendLayout();
@@ -148,6 +150,8 @@ namespace ABSENSI_Juandi_rustiana
             this.cardForm.Controls.Add(this.guna2HtmlLabel4);
             this.cardForm.Controls.Add(this.cmbstatus);
             this.cardForm.Controls.Add(this.btnsimpan);
+            this.cardForm.Controls.Add(this.btnubah);
+            this.cardForm.Controls.Add(this.btnhapus);
             this.cardForm.Controls.Add(this.btnkosongkan);
             this.cardForm.Dock = System.Windows.Forms.DockStyle.Top;
             this.cardForm.Location = new System.Drawing.Point(24, 24);
@@ -237,6 +241,30 @@ namespace ABSENSI_Juandi_rustiana
             this.btnsimpan.Text = "Simpan";
             this.btnsimpan.Click += new System.EventHandler(this.btnsimpan_Click_1);
 
+            this.btnubah.BorderRadius = 8;
+            this.btnubah.FillColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.btnubah.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnubah.ForeColor = System.Drawing.Color.White;
+            this.btnubah.HoverState.FillColor = System.Drawing.Color.FromArgb(15, 23, 42);
+            this.btnubah.Location = new System.Drawing.Point(148, 120);
+            this.btnubah.Name = "btnubah";
+            this.btnubah.Size = new System.Drawing.Size(120, 40);
+            this.btnubah.TabIndex = 5;
+            this.btnubah.Text = "Ubah";
+            this.btnubah.Click += new System.EventHandler(this.btnubah_Click);
+
+            this.btnhapus.BorderRadius = 8;
+            this.btnhapus.FillColor = System.Drawing.Color.FromArgb(220, 38, 38);
+            this.btnhapus.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnhapus.ForeColor = System.Drawing.Color.White;
+            this.btnhapus.HoverState.FillColor = System.Drawing.Color.FromArgb(185, 28, 28);
+            this.btnhapus.Location = new System.Drawing.Point(280, 120);
+            this.btnhapus.Name = "btnhapus";
+            this.btnhapus.Size = new System.Drawing.Size(120, 40);
+            this.btnhapus.TabIndex = 6;
+            this.btnhapus.Text = "Hapus";
+            this.btnhapus.Click += new System.EventHandler(this.btnhapus_Click);
+
             this.btnkosongkan.BorderColor = System.Drawing.Color.FromArgb(203, 213, 225);
             this.btnkosongkan.BorderRadius = 8;
             this.btnkosongkan.BorderThickness = 1;
@@ -244,10 +272,10 @@ namespace ABSENSI_Juandi_rustiana
             this.btnkosongkan.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnkosongkan.ForeColor = System.Drawing.Color.FromArgb(51, 65, 85);
             this.btnkosongkan.HoverState.FillColor = System.Drawing.Color.FromArgb(241, 245, 249);
-            this.btnkosongkan.Location = new System.Drawing.Point(148, 120);
+            this.btnkosongkan.Location = new System.Drawing.Point(412, 120);
             this.btnkosongkan.Name = "btnkosongkan";
             this.btnkosongkan.Size = new System.Drawing.Size(120, 40);
-            this.btnkosongkan.TabIndex = 5;
+            this.btnkosongkan.TabIndex = 7;
             this.btnkosongkan.Text = "Batal";
             this.btnkosongkan.Click += new System.EventHandler(this.btnkosongkan_Click);
 
@@ -353,6 +381,8 @@ namespace ABSENSI_Juandi_rustiana
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2Button btnsimpan;
+        private Guna.UI2.WinForms.Guna2Button btnubah;
+        private Guna.UI2.WinForms.Guna2Button btnhapus;
         private Guna.UI2.WinForms.Guna2Button btnkosongkan;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }

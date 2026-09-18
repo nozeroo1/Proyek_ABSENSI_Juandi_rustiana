@@ -69,7 +69,8 @@ namespace ABSENSI_Juandi_rustiana
             this.lblBrandSub.Name = "lblBrandSub";
             this.lblBrandSub.Size = new System.Drawing.Size(360, 72);
             this.lblBrandSub.TabIndex = 2;
-            this.lblBrandSub.Text = "Pencatatan kehadiran siswa yang rapi, cepat, dan terpusat untuk administrasi sekolah.";
+            this.lblBrandSub.Text = "Pencatatan kehadiran siswa yang rapi, cepat, dan terpusat untuk administrasi seko" +
+    "lah.";
             // 
             // lblBrandTitle
             // 
@@ -78,7 +79,7 @@ namespace ABSENSI_Juandi_rustiana
             this.lblBrandTitle.ForeColor = System.Drawing.Color.White;
             this.lblBrandTitle.Location = new System.Drawing.Point(44, 198);
             this.lblBrandTitle.Name = "lblBrandTitle";
-            this.lblBrandTitle.Size = new System.Drawing.Size(259, 41);
+            this.lblBrandTitle.Size = new System.Drawing.Size(223, 41);
             this.lblBrandTitle.TabIndex = 1;
             this.lblBrandTitle.Text = "Sistem Absensi";
             // 
@@ -89,7 +90,7 @@ namespace ABSENSI_Juandi_rustiana
             this.lblBrand.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(165)))), ((int)(((byte)(250)))));
             this.lblBrand.Location = new System.Drawing.Point(48, 168);
             this.lblBrand.Name = "lblBrand";
-            this.lblBrand.Size = new System.Drawing.Size(171, 19);
+            this.lblBrand.Size = new System.Drawing.Size(170, 19);
             this.lblBrand.TabIndex = 0;
             this.lblBrand.Text = "SMK TI PEMBANGUNAN";
             // 
@@ -145,7 +146,6 @@ namespace ABSENSI_Juandi_rustiana
             this.textBox2.Location = new System.Drawing.Point(92, 322);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '\0';
             this.textBox2.PlaceholderText = "Masukkan password";
             this.textBox2.SelectedText = "";
             this.textBox2.Size = new System.Drawing.Size(360, 44);
@@ -169,7 +169,6 @@ namespace ABSENSI_Juandi_rustiana
             this.textBox1.Location = new System.Drawing.Point(92, 236);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '\0';
             this.textBox1.PlaceholderText = "Masukkan username";
             this.textBox1.SelectedText = "";
             this.textBox1.Size = new System.Drawing.Size(360, 44);
@@ -183,7 +182,7 @@ namespace ABSENSI_Juandi_rustiana
             this.pas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.pas.Location = new System.Drawing.Point(92, 298);
             this.pas.Name = "pas";
-            this.pas.Size = new System.Drawing.Size(69, 17);
+            this.pas.Size = new System.Drawing.Size(66, 17);
             this.pas.TabIndex = 3;
             this.pas.Text = "Password";
             // 
@@ -194,7 +193,7 @@ namespace ABSENSI_Juandi_rustiana
             this.user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.user.Location = new System.Drawing.Point(92, 212);
             this.user.Name = "user";
-            this.user.Size = new System.Drawing.Size(71, 17);
+            this.user.Size = new System.Drawing.Size(69, 17);
             this.user.TabIndex = 2;
             this.user.Text = "Username";
             // 
@@ -204,7 +203,7 @@ namespace ABSENSI_Juandi_rustiana
             this.lblLoginHint.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.lblLoginHint.Location = new System.Drawing.Point(92, 164);
             this.lblLoginHint.Name = "lblLoginHint";
-            this.lblLoginHint.Size = new System.Drawing.Size(360, 36);
+            this.lblLoginHint.Size = new System.Drawing.Size(384, 36);
             this.lblLoginHint.TabIndex = 4;
             this.lblLoginHint.Text = "Masuk sesuai hak akses Anda sebagai admin atau petugas.";
             // 
@@ -215,7 +214,7 @@ namespace ABSENSI_Juandi_rustiana
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.label1.Location = new System.Drawing.Point(86, 118);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 41);
+            this.label1.Size = new System.Drawing.Size(109, 41);
             this.label1.TabIndex = 4;
             this.label1.Text = "Masuk";
             // 
