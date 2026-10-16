@@ -2,6 +2,12 @@
 using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using System.IO;
+using System.Diagnostics;
+
+
 
 namespace ABSENSI_Juandi_rustiana
 {
@@ -385,6 +391,17 @@ namespace ABSENSI_Juandi_rustiana
         private void btnbatal_Click(object sender, EventArgs e)
         {
             kosongkan();
+        }
+
+        private void btncetak_Click(object sender, EventArgs e)
+        {
+            ReportDocument rpt = new ReportDocument();
+            rpt.Load("dataguru_report.rpt");
+
+            string pdfPath = Path.Combine(Path.GetTempPath(), "Laporan_Guru.pdf");
+            rpt.ExportToDisk(ExportFormatType.PortableDocFormat, pdfPath);
+
+            System.Diagnostics.Process.Start(pdfPath);
         }
     }
 }
