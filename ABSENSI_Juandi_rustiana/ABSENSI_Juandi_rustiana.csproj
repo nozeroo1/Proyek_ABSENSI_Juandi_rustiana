@@ -90,9 +90,11 @@
       <HintPath>..\packages\CrystalReports.ReportAppServer.XmlSerialize.13.0.4000\lib\net40\CrystalDecisions.ReportAppServer.XmlSerialize.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <HintPath>..\packages\CrystalReports.Shared.13.0.4000\lib\net40\CrystalDecisions.Shared.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Google.Protobuf, Version=3.35.0.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.35.0\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -143,6 +145,7 @@
     </Reference>
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -224,6 +227,12 @@
     <Compile Include="Fadmin.Designer.cs">
       <DependentUpon>Fadmin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Fpetugas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -276,6 +285,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fadmin.resx">
       <DependentUpon>Fadmin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fpetugas.resx">
       <DependentUpon>Fpetugas.cs</DependentUpon>

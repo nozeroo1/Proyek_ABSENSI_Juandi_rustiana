@@ -132,5 +132,12 @@ namespace ABSENSI_Juandi_rustiana
         {
             Application.Exit();
         }
+
+        private void report_Click(object sender, EventArgs e)
+        {
+            Form2 halaman = new Form2();
+            halaman.Show();
+            this.Hide();
+        }
     }
 }

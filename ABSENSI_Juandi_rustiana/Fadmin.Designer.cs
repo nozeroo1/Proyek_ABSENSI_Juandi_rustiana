@@ -65,6 +65,7 @@ namespace ABSENSI_Juandi_rustiana
             this.lblCountSiswa = new System.Windows.Forms.Label();
             this.lblCardSiswa = new System.Windows.Forms.Label();
             this.lblSection = new System.Windows.Forms.Label();
+            this.report = new Guna.UI2.WinForms.Guna2Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panelContent.SuspendLayout();
@@ -110,7 +111,7 @@ namespace ABSENSI_Juandi_rustiana
             this.lblWelcome.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(116)))), ((int)(((byte)(139)))));
             this.lblWelcome.Location = new System.Drawing.Point(28, 50);
             this.lblWelcome.Name = "lblWelcome";
-            this.lblWelcome.Size = new System.Drawing.Size(214, 19);
+            this.lblWelcome.Size = new System.Drawing.Size(172, 19);
             this.lblWelcome.TabIndex = 1;
             this.lblWelcome.Text = "Kelola data master sekolah";
             // 
@@ -121,13 +122,14 @@ namespace ABSENSI_Juandi_rustiana
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
             this.label1.Location = new System.Drawing.Point(24, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 30);
+            this.label1.Size = new System.Drawing.Size(192, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Dashboard Admin";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(23)))), ((int)(((byte)(42)))));
+            this.panel1.Controls.Add(this.report);
             this.panel1.Controls.Add(this.lblSidebarRole);
             this.panel1.Controls.Add(this.lblSidebarTitle);
             this.panel1.Controls.Add(this.guna2Button9);
@@ -153,7 +155,7 @@ namespace ABSENSI_Juandi_rustiana
             this.lblSidebarRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(148)))), ((int)(((byte)(163)))), ((int)(((byte)(184)))));
             this.lblSidebarRole.Location = new System.Drawing.Point(22, 52);
             this.lblSidebarRole.Name = "lblSidebarRole";
-            this.lblSidebarRole.Size = new System.Drawing.Size(90, 15);
+            this.lblSidebarRole.Size = new System.Drawing.Size(80, 15);
             this.lblSidebarRole.TabIndex = 10;
             this.lblSidebarRole.Text = "Administrator";
             // 
@@ -164,7 +166,7 @@ namespace ABSENSI_Juandi_rustiana
             this.lblSidebarTitle.ForeColor = System.Drawing.Color.White;
             this.lblSidebarTitle.Location = new System.Drawing.Point(20, 24);
             this.lblSidebarTitle.Name = "lblSidebarTitle";
-            this.lblSidebarTitle.Size = new System.Drawing.Size(150, 25);
+            this.lblSidebarTitle.Size = new System.Drawing.Size(140, 25);
             this.lblSidebarTitle.TabIndex = 9;
             this.lblSidebarTitle.Text = "Sistem Absensi";
             // 
@@ -358,7 +360,7 @@ namespace ABSENSI_Juandi_rustiana
             // 
             // cardJadwal
             // 
-            this.cardJadwal.BackColor = System.Drawing.Color.White;
+            this.cardJadwal.BackColor = System.Drawing.Color.Transparent;
             this.cardJadwal.BorderRadius = 12;
             this.cardJadwal.Controls.Add(this.lblCountJadwal);
             this.cardJadwal.Controls.Add(this.lblCardJadwal);
@@ -389,13 +391,13 @@ namespace ABSENSI_Juandi_rustiana
             this.lblCardJadwal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(158)))), ((int)(((byte)(11)))));
             this.lblCardJadwal.Location = new System.Drawing.Point(28, 24);
             this.lblCardJadwal.Name = "lblCardJadwal";
-            this.lblCardJadwal.Size = new System.Drawing.Size(57, 20);
+            this.lblCardJadwal.Size = new System.Drawing.Size(55, 20);
             this.lblCardJadwal.TabIndex = 0;
             this.lblCardJadwal.Text = "Jadwal";
             // 
             // cardMapel
             // 
-            this.cardMapel.BackColor = System.Drawing.Color.White;
+            this.cardMapel.BackColor = System.Drawing.Color.Transparent;
             this.cardMapel.BorderRadius = 12;
             this.cardMapel.Controls.Add(this.lblCountMapel);
             this.cardMapel.Controls.Add(this.lblCardMapel);
@@ -426,13 +428,13 @@ namespace ABSENSI_Juandi_rustiana
             this.lblCardMapel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(139)))), ((int)(((byte)(92)))), ((int)(((byte)(246)))));
             this.lblCardMapel.Location = new System.Drawing.Point(28, 24);
             this.lblCardMapel.Name = "lblCardMapel";
-            this.lblCardMapel.Size = new System.Drawing.Size(117, 20);
+            this.lblCardMapel.Size = new System.Drawing.Size(111, 20);
             this.lblCardMapel.TabIndex = 0;
             this.lblCardMapel.Text = "Mata Pelajaran";
             // 
             // cardGuru
             // 
-            this.cardGuru.BackColor = System.Drawing.Color.White;
+            this.cardGuru.BackColor = System.Drawing.Color.Transparent;
             this.cardGuru.BorderRadius = 12;
             this.cardGuru.Controls.Add(this.lblCountGuru);
             this.cardGuru.Controls.Add(this.lblCardGuru);
@@ -463,13 +465,13 @@ namespace ABSENSI_Juandi_rustiana
             this.lblCardGuru.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(182)))), ((int)(((byte)(212)))));
             this.lblCardGuru.Location = new System.Drawing.Point(28, 24);
             this.lblCardGuru.Name = "lblCardGuru";
-            this.lblCardGuru.Size = new System.Drawing.Size(42, 20);
+            this.lblCardGuru.Size = new System.Drawing.Size(43, 20);
             this.lblCardGuru.TabIndex = 0;
             this.lblCardGuru.Text = "Guru";
             // 
             // cardJurusan
             // 
-            this.cardJurusan.BackColor = System.Drawing.Color.White;
+            this.cardJurusan.BackColor = System.Drawing.Color.Transparent;
             this.cardJurusan.BorderRadius = 12;
             this.cardJurusan.Controls.Add(this.lblCountJurusan);
             this.cardJurusan.Controls.Add(this.lblCardJurusan);
@@ -500,13 +502,13 @@ namespace ABSENSI_Juandi_rustiana
             this.lblCardJurusan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(185)))), ((int)(((byte)(129)))));
             this.lblCardJurusan.Location = new System.Drawing.Point(28, 24);
             this.lblCardJurusan.Name = "lblCardJurusan";
-            this.lblCardJurusan.Size = new System.Drawing.Size(66, 20);
+            this.lblCardJurusan.Size = new System.Drawing.Size(62, 20);
             this.lblCardJurusan.TabIndex = 0;
             this.lblCardJurusan.Text = "Jurusan";
             // 
             // cardKelas
             // 
-            this.cardKelas.BackColor = System.Drawing.Color.White;
+            this.cardKelas.BackColor = System.Drawing.Color.Transparent;
             this.cardKelas.BorderRadius = 12;
             this.cardKelas.Controls.Add(this.lblCountKelas);
             this.cardKelas.Controls.Add(this.lblCardKelas);
@@ -537,13 +539,13 @@ namespace ABSENSI_Juandi_rustiana
             this.lblCardKelas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
             this.lblCardKelas.Location = new System.Drawing.Point(28, 24);
             this.lblCardKelas.Name = "lblCardKelas";
-            this.lblCardKelas.Size = new System.Drawing.Size(45, 20);
+            this.lblCardKelas.Size = new System.Drawing.Size(44, 20);
             this.lblCardKelas.TabIndex = 0;
             this.lblCardKelas.Text = "Kelas";
             // 
             // cardSiswa
             // 
-            this.cardSiswa.BackColor = System.Drawing.Color.White;
+            this.cardSiswa.BackColor = System.Drawing.Color.Transparent;
             this.cardSiswa.BorderRadius = 12;
             this.cardSiswa.Controls.Add(this.lblCountSiswa);
             this.cardSiswa.Controls.Add(this.lblCardSiswa);
@@ -574,7 +576,7 @@ namespace ABSENSI_Juandi_rustiana
             this.lblCardSiswa.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.lblCardSiswa.Location = new System.Drawing.Point(28, 24);
             this.lblCardSiswa.Name = "lblCardSiswa";
-            this.lblCardSiswa.Size = new System.Drawing.Size(48, 20);
+            this.lblCardSiswa.Size = new System.Drawing.Size(46, 20);
             this.lblCardSiswa.TabIndex = 0;
             this.lblCardSiswa.Text = "Siswa";
             // 
@@ -585,9 +587,28 @@ namespace ABSENSI_Juandi_rustiana
             this.lblSection.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(65)))), ((int)(((byte)(85)))));
             this.lblSection.Location = new System.Drawing.Point(28, 28);
             this.lblSection.Name = "lblSection";
-            this.lblSection.Size = new System.Drawing.Size(194, 21);
+            this.lblSection.Size = new System.Drawing.Size(173, 21);
             this.lblSection.TabIndex = 0;
             this.lblSection.Text = "Ringkasan data master";
+            // 
+            // report
+            // 
+            this.report.BorderRadius = 8;
+            this.report.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.report.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.report.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.report.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.report.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(41)))), ((int)(((byte)(59)))));
+            this.report.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.report.ForeColor = System.Drawing.Color.White;
+            this.report.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
+            this.report.Location = new System.Drawing.Point(16, 88);
+            this.report.Name = "report";
+            this.report.Size = new System.Drawing.Size(228, 42);
+            this.report.TabIndex = 11;
+            this.report.Text = "report";
+            this.report.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.report.Click += new System.EventHandler(this.report_Click);
             // 
             // Fadmin
             // 
@@ -665,5 +686,6 @@ namespace ABSENSI_Juandi_rustiana
         private Guna.UI2.WinForms.Guna2Panel cardJadwal;
         private System.Windows.Forms.Label lblCountJadwal;
         private System.Windows.Forms.Label lblCardJadwal;
+        private Guna.UI2.WinForms.Guna2Button report;
     }
 }
